@@ -21,6 +21,7 @@
 #include "MainWindow.h"
 #include "Game.h"
 
+
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
@@ -42,4 +43,24 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
+	const int x = 400;
+	const int y = 300;
+
+	if (wnd.kbd.KeyIsPressed(VK_UP))
+	{
+		if (wnd.kbd.KeyIsPressed(VK_DOWN)) {
+			gfx.PutPixel(-5 + x, y, 255, 255, 255);
+			gfx.PutPixel(-4 + x, y, 255, 255, 255);
+			gfx.PutPixel(-3 + x, y, 255, 255, 255);
+			gfx.PutPixel(3 + x, y, 255, 255, 255);
+			gfx.PutPixel(4 + x, y, 255, 255, 255);
+			gfx.PutPixel(5 + x, y, 255, 255, 255);
+			gfx.PutPixel(x, -5 + y, 255, 255, 255);
+			gfx.PutPixel(x, -4 + y, 255, 255, 255);
+			gfx.PutPixel(x, -3 + y, 255, 255, 255);
+			gfx.PutPixel(x, 3 + y, 255, 255, 255);
+			gfx.PutPixel(x, 4 + y, 255, 255, 255);
+			gfx.PutPixel(x, 5 + y, 255, 255, 255);
+		}
+	}
 }
