@@ -54,7 +54,7 @@ private:
 
 	bool altReticle = false;
 
-	int reticleRadius = 8;
+	int reticleRadius = 10;
 
 	int vx = 0;
 	int vy = 0;

@@ -39,6 +39,7 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	// reticle color change
 	if (wnd.kbd.KeyIsPressed(VK_SHIFT))
 	{
 		b = 0;
@@ -48,8 +49,10 @@ void Game::UpdateModel()
 		b = 255;
 	}
 
+	// check which reticle to draw (default / alternative)
 	altReticle = wnd.kbd.KeyIsPressed(VK_CONTROL);
 
+	// make sure there is one velocity increase per button press
 	if (wnd.kbd.KeyIsPressed(VK_UP))
 	{
 		if (!inhibitUp)
@@ -102,34 +105,31 @@ void Game::UpdateModel()
 		inhibitRight = false;
 	}
 
+	// update position with velocity
 	x += vx;
 	y += vy;
 
+	// handle stopping at screen boundary
 	if (x < reticleRadius)
 	{
-		//x = reticleRadius;
 		x -= vx;
 		vx = 0;
 	}
 	if (x > Graphics::ScreenWidth - reticleRadius)
 	{
-		//x = Graphics::ScreenWidth - reticleRadius;
 		x -= vx;
 		vx = 0;
 	}
 	if (y < reticleRadius)
 	{
-		//y = reticleRadius;
 		y -= vy;
 		vy = 0;
 	}
 	if (y > Graphics::ScreenHeight - reticleRadius)
 	{
-		//y = Graphics::ScreenHeight - reticleRadius;
 		y -= vy;
 		vy = 0;
 	}
-
 }
 
 void Game::ComposeFrame()
