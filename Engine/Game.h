@@ -45,5 +45,17 @@ private:
 	/********************************/
 	int x = 100;
 	int y = 100;
-	const int speed = 5;
+
+	const int displacement = 5;
+
+	int r = 255;
+	int g = 255;
+	int b = 255;
+
+	bool altReticle = false;
+
+	int vx = 0;
+	int vy = 0;
+
+	bool inhibitUp, inhibitDown, inhibitLeft, inhibitRight = false;
 };

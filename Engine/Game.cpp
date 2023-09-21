@@ -39,39 +39,76 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-}
-
-void Game::ComposeFrame()
-{
-	int r = 255;
-	int g = 255;
-	int b = 255;
-
 	if (wnd.kbd.KeyIsPressed(VK_SHIFT))
 	{
 		b = 0;
 	}
+	else
+	{
+		b = 255;
+	}
+
+	altReticle = wnd.kbd.KeyIsPressed(VK_CONTROL);
 
 	if (wnd.kbd.KeyIsPressed(VK_UP))
 	{
-		y -= speed;
+		if (!inhibitUp)
+		{
+			vy -= 1;
+			inhibitUp = true;
+		}
 	}
+	else
+	{
+		inhibitUp = false;
+	}
+
 	if (wnd.kbd.KeyIsPressed(VK_DOWN))
 	{
-		y += speed;
+		if (!inhibitDown)
+		{
+			vy += 1;
+			inhibitDown = true;
+		}
 	}
+	else
+	{
+		inhibitDown = false;
+	}
+
 	if (wnd.kbd.KeyIsPressed(VK_LEFT))
 	{
-		x -= speed;
+		if (!inhibitLeft)
+		{
+			vx -= 1;
+			inhibitLeft = true;
+		}
 	}
+	else
+	{
+		inhibitLeft = false;
+	}
+
 	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
 	{
-		x += speed;
+		if (!inhibitRight)
+		{
+			vx += 1;
+			inhibitRight = true;
+		}
+	}
+	else
+	{
+		inhibitRight = false;
 	}
 
+	x += vx;
+	y += vy;
+}
 
-
-	if (!wnd.kbd.KeyIsPressed(VK_CONTROL))
+void Game::ComposeFrame()
+{
+	if (!altReticle)
 	{
 		gfx.PutPixel(-5 + x, y, r, g, b);
 		gfx.PutPixel(-4 + x, y, r, g, b);
