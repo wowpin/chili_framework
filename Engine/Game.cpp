@@ -43,9 +43,6 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	int x = 400;
-	int y = 300;
-
 	int r = 255;
 	int g = 255;
 	int b = 255;
@@ -57,19 +54,19 @@ void Game::ComposeFrame()
 
 	if (wnd.kbd.KeyIsPressed(VK_UP))
 	{
-		y -= 100;
+		y -= speed;
 	}
 	if (wnd.kbd.KeyIsPressed(VK_DOWN))
 	{
-		y += 100;
+		y += speed;
 	}
 	if (wnd.kbd.KeyIsPressed(VK_LEFT))
 	{
-		x -= 100;
+		x -= speed;
 	}
 	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
 	{
-		x += 100;
+		x += speed;
 	}
 
 
