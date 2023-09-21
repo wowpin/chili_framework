@@ -54,40 +54,20 @@ void Game::ComposeFrame()
 	{
 		b = 0;
 	}
-	else
-	{
-		b = 255;
-	}
 
 	if (wnd.kbd.KeyIsPressed(VK_UP))
 	{
 		y -= 100;
-		if (wnd.kbd.KeyIsPressed(VK_LEFT))
-		{
-			x -= 100;
-		}
-		else if (wnd.kbd.KeyIsPressed(VK_RIGHT))
-		{
-			x += 100;
-		}
 	}
-	else if (wnd.kbd.KeyIsPressed(VK_DOWN))
+	if (wnd.kbd.KeyIsPressed(VK_DOWN))
 	{
 		y += 100;
-		if (wnd.kbd.KeyIsPressed(VK_LEFT))
-		{
-			x -= 100;
-		}
-		else if (wnd.kbd.KeyIsPressed(VK_RIGHT))
-		{
-			x += 100;
-		}
 	}
-	else if (wnd.kbd.KeyIsPressed(VK_LEFT))
+	if (wnd.kbd.KeyIsPressed(VK_LEFT))
 	{
 		x -= 100;
 	}
-	else if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
 	{
 		x += 100;
 	}
