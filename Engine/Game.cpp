@@ -104,6 +104,28 @@ void Game::UpdateModel()
 
 	x += vx;
 	y += vy;
+
+	if (x <= 0)
+	{
+		x = reticleRadius;
+		vx = 0;
+	}
+	if (x >= Graphics::ScreenWidth)
+	{
+		x = Graphics::ScreenWidth - reticleRadius;
+		vx = 0;
+	}
+	if (y <= 0)
+	{
+		y = reticleRadius;
+		vy = 0;
+	}
+	if (y >= Graphics::ScreenHeight)
+	{
+		y = Graphics::ScreenHeight - reticleRadius;
+		vy = 0;
+	}
+
 }
 
 void Game::ComposeFrame()
