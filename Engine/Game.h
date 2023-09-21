@@ -54,10 +54,13 @@ private:
 
 	bool altReticle = false;
 
-	int reticleRadius = 20;
+	int reticleRadius = 8;
 
 	int vx = 0;
 	int vy = 0;
 
-	bool inhibitUp, inhibitDown, inhibitLeft, inhibitRight = false;
+	bool inhibitUp = false;
+	bool inhibitDown = false;
+	bool inhibitLeft = false;
+	bool inhibitRight = false;
 };

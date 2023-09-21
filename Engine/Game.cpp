@@ -105,24 +105,28 @@ void Game::UpdateModel()
 	x += vx;
 	y += vy;
 
-	if (x <= 0)
+	if (x < reticleRadius)
 	{
-		x = reticleRadius;
+		//x = reticleRadius;
+		x -= vx;
 		vx = 0;
 	}
-	if (x >= Graphics::ScreenWidth)
+	if (x > Graphics::ScreenWidth - reticleRadius)
 	{
-		x = Graphics::ScreenWidth - reticleRadius;
+		//x = Graphics::ScreenWidth - reticleRadius;
+		x -= vx;
 		vx = 0;
 	}
-	if (y <= 0)
+	if (y < reticleRadius)
 	{
-		y = reticleRadius;
+		//y = reticleRadius;
+		y -= vy;
 		vy = 0;
 	}
-	if (y >= Graphics::ScreenHeight)
+	if (y > Graphics::ScreenHeight - reticleRadius)
 	{
-		y = Graphics::ScreenHeight - reticleRadius;
+		//y = Graphics::ScreenHeight - reticleRadius;
+		y -= vy;
 		vy = 0;
 	}
 
