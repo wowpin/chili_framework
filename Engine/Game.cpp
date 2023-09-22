@@ -42,11 +42,17 @@ void Game::UpdateModel()
 	// reticle color change
 	if (wnd.kbd.KeyIsPressed(VK_SHIFT))
 	{
-		b = 0;
+		SetReticleYellow();
 	}
 	else
 	{
-		b = 255;
+		SetReticleWhite();
+	}
+
+	// change reticle color if X is between 350 and 450
+	if (x >= (gfx.ScreenWidth / 2) - (centerStripWidth / 2) && x <= (gfx.ScreenWidth / 2) + (centerStripWidth / 2))
+	{
+		SetReticleBlue();
 	}
 
 	// check which reticle to draw (default / alternative)
@@ -137,6 +143,27 @@ void Game::UpdateModel()
 		y = reticleMaxSize;
 		vy = 0;
 	}
+}
+
+void Game::SetReticleWhite()
+{
+	r = 255;
+	g = 255;
+	b = 255;
+}
+
+void Game::SetReticleBlue()
+{
+	r = 0;
+	g = 0;
+	b = 255;
+}
+
+void Game::SetReticleYellow()
+{
+	r = 255;
+	g = 255;
+	b = 0;
 }
 
 void Game::ComposeFrame()

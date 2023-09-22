@@ -37,6 +37,9 @@ private:
 	/********************************/
 	/*  User Functions              */
 	/********************************/
+	void SetReticleWhite();
+	void SetReticleBlue();
+	void SetReticleYellow();
 private:
 	MainWindow& wnd;
 	Graphics gfx;
@@ -55,6 +58,7 @@ private:
 	bool altReticle = false;
 
 	int reticleMaxSize = 10;
+	int centerStripWidth = 300;
 
 	int vx = 0;
 	int vy = 0;
