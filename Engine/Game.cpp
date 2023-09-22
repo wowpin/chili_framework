@@ -55,11 +55,12 @@ void Game::UpdateModel()
 	//	SetReticleBlue();
 	//}
 
-	if ((x + reticleMaxSize >= targetX && x - reticleMaxSize <= targetX) && 
-		(y + reticleMaxSize >= targetY && y - reticleMaxSize < targetY))
+	if ((x + 5 >= targetX - 5 && x - 5 <= targetX + 5) &&
+		(y + 5 >= targetY - 5 && y - 5 <= targetY + 5))
 	{
 		SetReticleBlue();
 	}
+
 
 	// check which reticle to draw (default / alternative)
 	altReticle = wnd.kbd.KeyIsPressed(VK_CONTROL);
@@ -235,7 +236,8 @@ void Game::ComposeFrame()
 
 	if (!altReticle)
 	{
-		DrawReticleSmall(x, y, r, g, b);
+		//DrawReticleSmall(x, y, r, g, b);
+		DrawBox(x, y, r, g, b);
 	}
 	else
 	{
