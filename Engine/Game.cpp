@@ -110,24 +110,31 @@ void Game::UpdateModel()
 	y += vy;
 
 	// handle stopping at screen boundary
-	if (x < reticleRadius)
-	{
-		x -= vx;
+	// right edge
+	if(x + reticleMaxSize > gfx.ScreenWidth)
+	{ 
+		x = gfx.ScreenWidth - reticleMaxSize;
 		vx = 0;
 	}
-	if (x > Graphics::ScreenWidth - reticleRadius)
+
+	// left edge
+	if (x - reticleMaxSize < 0)
 	{
-		x -= vx;
+		x = reticleMaxSize;
 		vx = 0;
 	}
-	if (y < reticleRadius)
+
+	// bottom edge
+	if (y + reticleMaxSize > gfx.ScreenHeight)
 	{
-		y -= vy;
+		y = gfx.ScreenHeight - reticleMaxSize;
 		vy = 0;
 	}
-	if (y > Graphics::ScreenHeight - reticleRadius)
+
+	//top edge
+	if (y - reticleMaxSize < 0)
 	{
-		y -= vy;
+		y = reticleMaxSize;
 		vy = 0;
 	}
 }
