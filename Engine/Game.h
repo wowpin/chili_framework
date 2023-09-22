@@ -54,8 +54,17 @@ private:
 	int x = 100;
 	int y = 100;
 
-	const int targetX = 200;
-	const int targetY = 200;
+	const int target0X = 200;
+	const int target0Y = 200;
+
+	const int target1X = 120;
+	const int target1Y = 350;
+
+	const int target2X = 490;
+	const int target2Y = 190;
+
+	const int target3X = 710;
+	const int target3Y = 490;
 
 	int r = 255;
 	int g = 255;

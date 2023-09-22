@@ -56,7 +56,10 @@ void Game::UpdateModel()
 	//}
 
 	// handle collision with target
-	if (IsOverlapping(x, y, targetX, targetY))
+	if (IsOverlapping(x, y, target0X, target0Y) ||
+		IsOverlapping(x, y, target1X, target1Y) ||
+		IsOverlapping(x, y, target2X, target2Y) ||
+		IsOverlapping(x, y, target3X, target3Y))
 	{
 		SetReticleRed();
 	}
@@ -245,7 +248,11 @@ void Game::DrawBox(int targetX, int targetY, int r, int g, int b)
 void Game::ComposeFrame()
 {
 	// draw stationary reticle
-	DrawBox(targetX, targetY, 255, 255, 255);
+	DrawBox(target0X, target0Y, 255, 255, 255);
+	DrawBox(target1X, target1Y, 255, 255, 255);
+	DrawBox(target2X, target2Y, 255, 255, 255);
+	DrawBox(target3X, target3Y, 255, 255, 255);
+
 
 	if (!altReticle)
 	{
