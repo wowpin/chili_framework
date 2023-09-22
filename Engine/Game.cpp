@@ -55,7 +55,8 @@ void Game::UpdateModel()
 	//	SetReticleBlue();
 	//}
 
-	if ((x + reticleMaxSize >= targetX && x - reticleMaxSize <= targetX) && (y + reticleMaxSize >= targetY && y - reticleMaxSize < targetY))
+	if ((x + reticleMaxSize >= targetX && x - reticleMaxSize <= targetX) && 
+		(y + reticleMaxSize >= targetY && y - reticleMaxSize < targetY))
 	{
 		SetReticleBlue();
 	}
@@ -171,50 +172,73 @@ void Game::SetReticleYellow()
 	b = 0;
 }
 
+void Game::DrawReticleSmall(int x, int y, int r, int g, int b)
+{
+	gfx.PutPixel(-5 + x, y, r, g, b);
+	gfx.PutPixel(-4 + x, y, r, g, b);
+	gfx.PutPixel(-3 + x, y, r, g, b);
+	gfx.PutPixel(3 + x, y, r, g, b);
+	gfx.PutPixel(4 + x, y, r, g, b);
+	gfx.PutPixel(5 + x, y, r, g, b);
+	gfx.PutPixel(x, -5 + y, r, g, b);
+	gfx.PutPixel(x, -4 + y, r, g, b);
+	gfx.PutPixel(x, -3 + y, r, g, b);
+	gfx.PutPixel(x, 3 + y, r, g, b);
+	gfx.PutPixel(x, 4 + y, r, g, b);
+	gfx.PutPixel(x, 5 + y, r, g, b);
+}
+
+void Game::DrawReticleBig(int x, int y, int r, int g, int b)
+{
+	gfx.PutPixel(-9 + x, y, r, g, b);
+	gfx.PutPixel(-8 + x, y, r, g, b);
+	gfx.PutPixel(-7 + x, y, r, g, b);
+	gfx.PutPixel(7 + x, y, r, g, b);
+	gfx.PutPixel(8 + x, y, r, g, b);
+	gfx.PutPixel(9 + x, y, r, g, b);
+	gfx.PutPixel(x, -9 + y, r, g, b);
+	gfx.PutPixel(x, -8 + y, r, g, b);
+	gfx.PutPixel(x, -7 + y, r, g, b);
+	gfx.PutPixel(x, 7 + y, r, g, b);
+	gfx.PutPixel(x, 8 + y, r, g, b);
+	gfx.PutPixel(x, 9 + y, r, g, b);
+}
+
+void Game::DrawBox(int targetX, int targetY, int r, int g, int b)
+{
+	gfx.PutPixel(-5 + targetX, -5 + targetY, r, g, b);
+	gfx.PutPixel(-5 + targetX, -4 + targetY,  r, g, b);
+	gfx.PutPixel(-5 + targetX, -3 + targetY,  r, g, b);
+	gfx.PutPixel(-4 + targetX, -5 + targetY,  r, g, b);
+	gfx.PutPixel(-3 + targetX, -5 + targetY, r, g, b);
+	gfx.PutPixel(-5 + targetX, 5 + targetY, r, g, b);
+	gfx.PutPixel(-5 + targetX, 4 + targetY, r, g, b);
+	gfx.PutPixel(-5 + targetX, 3 + targetY, r, g, b);
+	gfx.PutPixel(-4 + targetX, 5 + targetY, r, g, b);
+	gfx.PutPixel(-3 + targetX, 5 + targetY, r, g, b);
+	gfx.PutPixel(5 + targetX, -5 + targetY, r, g, b);
+	gfx.PutPixel(5 + targetX, -4 + targetY, r, g, b);
+	gfx.PutPixel(5 + targetX, -3 + targetY, r, g, b);
+	gfx.PutPixel(4 + targetX, -5 + targetY, r, g, b);
+	gfx.PutPixel(3 + targetX, -5 + targetY, r, g, b);
+	gfx.PutPixel(5 + targetX, 5 + targetY, r, g, b);
+	gfx.PutPixel(5 + targetX, 4 + targetY, r, g, b);
+	gfx.PutPixel(5 + targetX, 3 + targetY, r, g, b);
+	gfx.PutPixel(4 + targetX, 5 + targetY, r, g, b);
+	gfx.PutPixel(3 + targetX, 5 + targetY, r, g, b);
+}
+
 void Game::ComposeFrame()
 {
 	// draw stationary reticle
-	gfx.PutPixel(-9 + targetX, targetY, 255, 255, 255);
-	gfx.PutPixel(-8 + targetX, targetY, 255, 255, 255);
-	gfx.PutPixel(-7 + targetX, targetY, 255, 255, 255);
-	gfx.PutPixel(7 + targetX, targetY, 255, 255, 255);
-	gfx.PutPixel(8 + targetX, targetY, 255, 255, 255);
-	gfx.PutPixel(9 + targetX, targetY, 255, 255, 255);
-	gfx.PutPixel(targetX, -9 + targetY, 255, 255, 255);
-	gfx.PutPixel(targetX, -8 + targetY, 255, 255, 255);
-	gfx.PutPixel(targetX, -7 + targetY, 255, 255, 255);
-	gfx.PutPixel(targetX, 7 + targetY, 255, 255, 255);
-	gfx.PutPixel(targetX, 8 + targetY, 255, 255, 255);
-	gfx.PutPixel(targetX, 9 + targetY, 255, 255, 255);
+	DrawBox(targetX, targetY, 255, 255, 255);
 
 	if (!altReticle)
 	{
-		gfx.PutPixel(-5 + x, y, r, g, b);
-		gfx.PutPixel(-4 + x, y, r, g, b);
-		gfx.PutPixel(-3 + x, y, r, g, b);
-		gfx.PutPixel(3 + x, y, r, g, b);
-		gfx.PutPixel(4 + x, y, r, g, b);
-		gfx.PutPixel(5 + x, y, r, g, b);
-		gfx.PutPixel(x, -5 + y, r, g, b);
-		gfx.PutPixel(x, -4 + y, r, g, b);
-		gfx.PutPixel(x, -3 + y, r, g, b);
-		gfx.PutPixel(x, 3 + y, r, g, b);
-		gfx.PutPixel(x, 4 + y, r, g, b);
-		gfx.PutPixel(x, 5 + y, r, g, b);
+		DrawReticleSmall(x, y, r, g, b);
 	}
 	else
 	{
-		gfx.PutPixel(-9 + x, y, r, g, b);
-		gfx.PutPixel(-8 + x, y, r, g, b);
-		gfx.PutPixel(-7 + x, y, r, g, b);
-		gfx.PutPixel(7 + x, y, r, g, b);
-		gfx.PutPixel(8 + x, y, r, g, b);
-		gfx.PutPixel(9 + x, y, r, g, b);
-		gfx.PutPixel(x, -9 + y, r, g, b);
-		gfx.PutPixel(x, -8 + y, r, g, b);
-		gfx.PutPixel(x, -7 + y, r, g, b);
-		gfx.PutPixel(x, 7 + y, r, g, b);
-		gfx.PutPixel(x, 8 + y, r, g, b);
-		gfx.PutPixel(x, 9 + y, r, g, b);
+		DrawReticleBig(x, y, r, g, b);
 	}
 }
