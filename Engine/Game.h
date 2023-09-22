@@ -40,6 +40,7 @@ private:
 	void SetReticleWhite();
 	void SetReticleBlue();
 	void SetReticleYellow();
+	void SetReticleRed();
 	void DrawReticleSmall(int x, int y, int r, int g, int b);
 	void DrawReticleBig(int x, int y, int r, int g, int b);
 	void DrawBox(int targetX, int targetY, int r, int g, int b);

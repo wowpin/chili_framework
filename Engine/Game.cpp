@@ -58,7 +58,7 @@ void Game::UpdateModel()
 	if ((x + 5 >= targetX - 5 && x - 5 <= targetX + 5) &&
 		(y + 5 >= targetY - 5 && y - 5 <= targetY + 5))
 	{
-		SetReticleBlue();
+		SetReticleRed();
 	}
 
 
@@ -170,6 +170,13 @@ void Game::SetReticleYellow()
 {
 	r = 255;
 	g = 255;
+	b = 0;
+}
+
+void Game::SetReticleRed()
+{
+	r = 255;
+	g = 0;
 	b = 0;
 }
 
