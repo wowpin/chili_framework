@@ -49,6 +49,9 @@ private:
 	int x = 100;
 	int y = 100;
 
+	const int targetX = 250;
+	const int targetY = 400;
+
 	const int displacement = 5;
 
 	int r = 255;
@@ -59,6 +62,7 @@ private:
 
 	int reticleMaxSize = 10;
 	int centerStripWidth = 300;
+	int targetSize = 10;
 
 	int vx = 0;
 	int vy = 0;

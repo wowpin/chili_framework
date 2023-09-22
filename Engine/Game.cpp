@@ -50,7 +50,12 @@ void Game::UpdateModel()
 	}
 
 	// change reticle color if X is between 350 and 450
-	if (x >= (gfx.ScreenWidth / 2) - (centerStripWidth / 2) && x <= (gfx.ScreenWidth / 2) + (centerStripWidth / 2))
+	//if (x >= (gfx.ScreenWidth / 2) - (centerStripWidth / 2) && x <= (gfx.ScreenWidth / 2) + (centerStripWidth / 2))
+	//{
+	//	SetReticleBlue();
+	//}
+
+	if ((x + reticleMaxSize >= targetX && x - reticleMaxSize <= targetX) && (y + reticleMaxSize >= targetY && y - reticleMaxSize < targetY))
 	{
 		SetReticleBlue();
 	}
@@ -168,6 +173,20 @@ void Game::SetReticleYellow()
 
 void Game::ComposeFrame()
 {
+	// draw stationary reticle
+	gfx.PutPixel(-9 + targetX, targetY, 255, 255, 255);
+	gfx.PutPixel(-8 + targetX, targetY, 255, 255, 255);
+	gfx.PutPixel(-7 + targetX, targetY, 255, 255, 255);
+	gfx.PutPixel(7 + targetX, targetY, 255, 255, 255);
+	gfx.PutPixel(8 + targetX, targetY, 255, 255, 255);
+	gfx.PutPixel(9 + targetX, targetY, 255, 255, 255);
+	gfx.PutPixel(targetX, -9 + targetY, 255, 255, 255);
+	gfx.PutPixel(targetX, -8 + targetY, 255, 255, 255);
+	gfx.PutPixel(targetX, -7 + targetY, 255, 255, 255);
+	gfx.PutPixel(targetX, 7 + targetY, 255, 255, 255);
+	gfx.PutPixel(targetX, 8 + targetY, 255, 255, 255);
+	gfx.PutPixel(targetX, 9 + targetY, 255, 255, 255);
+
 	if (!altReticle)
 	{
 		gfx.PutPixel(-5 + x, y, r, g, b);
