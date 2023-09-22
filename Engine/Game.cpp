@@ -55,8 +55,8 @@ void Game::UpdateModel()
 	//	SetReticleBlue();
 	//}
 
-	if ((x + 5 >= targetX - 5 && x - 5 <= targetX + 5) &&
-		(y + 5 >= targetY - 5 && y - 5 <= targetY + 5))
+	// handle collision with target
+	if (IsOverlapping(x, y, targetX, targetY))
 	{
 		SetReticleRed();
 	}
@@ -149,6 +149,19 @@ void Game::UpdateModel()
 	{
 		y = reticleMaxSize;
 		vy = 0;
+	}
+}
+
+bool Game::IsOverlapping(int box0x, int box0y, int box1x, int box1y)
+{
+	if ((box0x + (boxSize / 2) >= box1x - (boxSize / 2) && box0x - (boxSize / 2) <= box1x + (boxSize / 2)) &&
+		(box0y + (boxSize / 2) >= box1y - (boxSize / 2) && box0y - (boxSize / 2) <= box1y + (boxSize / 2)))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
 

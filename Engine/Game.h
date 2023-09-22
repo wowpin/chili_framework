@@ -37,6 +37,7 @@ private:
 	/********************************/
 	/*  User Functions              */
 	/********************************/
+	bool IsOverlapping(int box0x, int box0y, int box1x, int box1y);
 	void SetReticleWhite();
 	void SetReticleBlue();
 	void SetReticleYellow();
@@ -53,10 +54,8 @@ private:
 	int x = 100;
 	int y = 100;
 
-	const int targetX = 250;
-	const int targetY = 400;
-
-	const int displacement = 5;
+	const int targetX = 200;
+	const int targetY = 200;
 
 	int r = 255;
 	int g = 255;
@@ -66,7 +65,7 @@ private:
 
 	int reticleMaxSize = 10;
 	int centerStripWidth = 300;
-	int targetSize = 10;
+	int boxSize = 10;
 
 	int vx = 0;
 	int vy = 0;
