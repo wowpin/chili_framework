@@ -45,6 +45,8 @@ private:
 	void DrawReticleSmall(int x, int y, int r, int g, int b);
 	void DrawReticleBig(int x, int y, int r, int g, int b);
 	void DrawBox(int targetX, int targetY, int r, int g, int b);
+	void ClampX(int &x, int &vx, int reticleMaxSize);
+	void ClampY(int &y, int &vy, int reticleMaxSize);
 private:
 	MainWindow& wnd;
 	Graphics gfx;
@@ -72,7 +74,7 @@ private:
 
 	bool altReticle = false;
 
-	int reticleMaxSize = 10;
+	const int reticleMaxSize = 10;
 	int centerStripWidth = 300;
 	int boxSize = 10;
 

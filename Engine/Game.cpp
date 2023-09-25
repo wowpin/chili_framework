@@ -125,34 +125,9 @@ void Game::UpdateModel()
 	x += vx;
 	y += vy;
 
-	// handle stopping at screen boundary
-	// right edge
-	if(x + reticleMaxSize > gfx.ScreenWidth)
-	{ 
-		x = gfx.ScreenWidth - reticleMaxSize;
-		vx = 0;
-	}
-
-	// left edge
-	if (x - reticleMaxSize < 0)
-	{
-		x = reticleMaxSize;
-		vx = 0;
-	}
-
-	// bottom edge
-	if (y + reticleMaxSize > gfx.ScreenHeight)
-	{
-		y = gfx.ScreenHeight - reticleMaxSize;
-		vy = 0;
-	}
-
-	//top edge
-	if (y - reticleMaxSize < 0)
-	{
-		y = reticleMaxSize;
-		vy = 0;
-	}
+	// handle screen boundary 
+	ClampX(x, vx, reticleMaxSize);
+	ClampY(y, vy, reticleMaxSize);
 }
 
 bool Game::IsOverlapping(int box0x, int box0y, int box1x, int box1y)
@@ -243,6 +218,40 @@ void Game::DrawBox(int targetX, int targetY, int r, int g, int b)
 	gfx.PutPixel(5 + targetX, 3 + targetY, r, g, b);
 	gfx.PutPixel(4 + targetX, 5 + targetY, r, g, b);
 	gfx.PutPixel(3 + targetX, 5 + targetY, r, g, b);
+}
+
+void Game::ClampX(int &x, int &vx, int reticleMaxSize)
+{
+	// right edge
+	if (x + reticleMaxSize > gfx.ScreenWidth)
+	{
+		x = gfx.ScreenWidth - reticleMaxSize;
+		vx = 0;
+	}
+
+	// left edge
+	if (x - reticleMaxSize < 0)
+	{
+		x = reticleMaxSize;
+		vx = 0;
+	}
+}
+
+void Game::ClampY(int &y, int &vy, int reticleMaxSize)
+{
+	// bottom edge
+	if (y + reticleMaxSize > gfx.ScreenHeight)
+	{
+		y = gfx.ScreenHeight - reticleMaxSize;
+		vy = 0;
+	}
+
+	//top edge
+	if (y - reticleMaxSize < 0)
+	{
+		y = reticleMaxSize;
+		vy = 0;
+	}
 }
 
 void Game::ComposeFrame()
